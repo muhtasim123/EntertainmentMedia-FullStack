@@ -18,12 +18,10 @@ public class UserServiceImplementation implements UserService {
 	
 	
 	@Override
-	public User login(String username, String password){
-
-		User u = ud.findUserByUsernameAndPassword(username, password);
-		//Entertainment720Launcher.setCurrentUser(u);
-		return u;
-	
+	public User login(String username, String password) {
+			User u = ud.findUserByUsernameAndPassword(username, password);
+			//Entertainment720Launcher.setCurrentUser(u);
+			return u;	
 	}
 
 }

@@ -22,9 +22,9 @@ public class ConnectionFactory {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String url = "jdbc:postgresql://revature-db.cfdbjt00wi4b.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=entertainment720";
-		String user = "postgres";
-		String password = "Soccer123!";
+		String url = System.getenv("DB_URL");
+		String user = System.getenv("DB_USER");
+		String password = System.getenv("DB_PASSWORD");
 		
 		try {
 			this.conn = new Connection[numberOfConnections];
