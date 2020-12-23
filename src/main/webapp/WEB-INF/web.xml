@@ -11,13 +11,5 @@
     <servlet-name>FrontController</servlet-name>
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>ErrorHandler</servlet-name>
-  	<servlet-class>com.revature.servlets.ErrorHandler</servlet-class>
-  </servlet>
-  <error-page>
-  	<exception-type>java.lang.Throwable</exception-type>
-  	<location></location>
-  </error-page>
+
 </web-app>

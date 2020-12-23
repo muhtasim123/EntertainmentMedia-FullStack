@@ -47,14 +47,28 @@ public class UserPostgresDao implements UserDao {
 
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	
-	
-	
+		Connection conn = cf.getConnection();
+		try {
+			String sql = "select * from users;";
+			PreparedStatement getUser = conn.prepareStatement(sql);
+			
+			ResultSet res = getUser.executeQuery();
+			while(res.next()) {
+				User u = new User();
+				u.setUserId(res.getInt("user_id"));
+				u.setFirstName(res.getString("first_name"));
+				u.setLastName(res.getString("last_name"));
+				u.setUsername(res.getString("username"));
+				u.setPassword(res.getString("password"));
+			}
+				
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			throw new InternalErrorException();
+		} finally {
+			cf.releaseConnection(conn);
+		}
+	}	
 
 }
