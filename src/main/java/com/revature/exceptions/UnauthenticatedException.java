@@ -1,9 +1,9 @@
 package com.revature.exceptions;
 
-public class UnauthenticatedException extends AbstractHttpExceptions {
+public class UnauthenticatedException extends AbstractHttpException {
 
 	public UnauthenticatedException() {
-		super("Please log in", 403);
+		super("Please Login", 401);
 		// TODO Auto-generated constructor stub
 	}
 

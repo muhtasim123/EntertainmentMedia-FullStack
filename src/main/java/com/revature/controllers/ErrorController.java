@@ -5,29 +5,34 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.exceptions.AbstractHttpExceptions;
+import com.revature.exceptions.AbstractHttpException;
+import com.revature.util.LoggerSingleton;
 
 public class ErrorController {
 
 	public void handle(HttpServletRequest req, HttpServletResponse res, Throwable t) throws IOException {
-		
-		if(t == null) {
-			t.printStackTrace();
+		// TODO Auto-generated method stub
+		if (t == null) {
 			res.setStatus(500);
-			res.getWriter().write("Oops something went wrong");
+			res.getWriter().write("OOPS something went wrong");
 			return;
 		}
-		
-		if(t instanceof AbstractHttpExceptions) {
-			AbstractHttpExceptions err = (AbstractHttpExceptions) t;
-			t.printStackTrace();
+
+		// all of my custom errors will end up here
+		if (t instanceof AbstractHttpException) {
+
+			AbstractHttpException err = (AbstractHttpException) t;
+			System.out.println(t.getMessage());
 			res.setStatus(err.getStatusCode());
 			res.getWriter().write(err.getMessage());
+
 		} else {
-			//LoggerSingleton.getLogger().error(t.getStackTrace());
 			t.printStackTrace();
+			LoggerSingleton.getLogger().error(t.getStackTrace());
 			res.setStatus(500);
-			res.getWriter().write("Oops something went wrong");
+			res.getWriter().write("OOPS something went wrong");
 		}
+
 	}
+
 }

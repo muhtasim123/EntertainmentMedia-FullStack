@@ -25,9 +25,13 @@ public class UserServiceImplementation implements UserService {
 			//Entertainment720Launcher.setCurrentUser(u);
 			return u;	
 	}
-	
-	public List<User> findAll(){
-		return null;
+
+
+
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		return ud.findAll();
 	}
 
 }

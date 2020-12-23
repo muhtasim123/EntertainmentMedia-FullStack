@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.exceptions.UnauthenticatedException;
 import com.revature.exceptions.UnauthorizedException;
@@ -22,8 +21,9 @@ public class UserController {
 	
 	private ObjectMapper om = new ObjectMapper();
 	
-	public void findAllUsers(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException {
-		// TODO Auto-generated method stub
+
+	public void findAllUsers(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
 		HttpSession sess = req.getSession();
 		
 		if(sess.getAttribute("User-Role") == null) {
@@ -31,11 +31,10 @@ public class UserController {
 		} else if(!sess.getAttribute("User-Role").equals("Admin")) {
 			throw new UnauthorizedException();
 		}
-		
-		List<User> allusers = us.findAll();
-		
+		List<User> allusers = us.getAllUsers();
 		res.setStatus(200);
 		res.getWriter().write(om.writeValueAsString(allusers));
-
+		
 	}
+	
 }

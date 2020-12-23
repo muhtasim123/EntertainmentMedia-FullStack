@@ -1,8 +1,10 @@
 package com.revature.exceptions;
 
-public class UnauthorizedException extends AbstractHttpExceptions {
+public class UnauthorizedException extends AbstractHttpException {
 
 	public UnauthorizedException() {
-		super("Unauthorized User", 403);
+		super("You do not have permissions to use this endpoint. Please see you administrator", 403);
+		// TODO Auto-generated constructor stub
 	}
+
 }

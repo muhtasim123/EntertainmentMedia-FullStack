@@ -1,8 +1,13 @@
 package com.revature.exceptions;
 
-public class MediaNotFoundException extends AbstractHttpExceptions {
+public class MediaNotFoundException extends AbstractHttpException {
 
+
+	private static int numberOfOccurances =0;
+	
+	
 	public MediaNotFoundException() {
-		super("That Movie Was Not Found, Please Try Again", 1);
+		super("That Media Was Not Found, Please Try Again", 404);
+		numberOfOccurances++;
 	}
 }

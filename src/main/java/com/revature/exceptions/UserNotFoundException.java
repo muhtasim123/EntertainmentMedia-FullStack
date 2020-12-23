@@ -1,7 +1,7 @@
 package com.revature.exceptions;
 
-public class UserNotFoundException extends AbstractHttpExceptions {
+public class UserNotFoundException extends AbstractHttpException {
 	public UserNotFoundException() {
-		super("User Not Found", 1);
+		super("User Not Found", 404);
 	}
 }
