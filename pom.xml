@@ -37,4 +37,8 @@
 			<version>2.9.10.1</version>
 		</dependency>
   </dependencies>
+  
+  <build>
+  	<finalName>e720</finalName>
+  </build>
 </project>

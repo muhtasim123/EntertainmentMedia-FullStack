@@ -16,7 +16,12 @@ public class ConnectionFactory {
 	private Connection[] conn;
 	
 	public ConnectionFactory(int numberOfConnections) {
-		
+		try {
+			DriverManager.registerDriver(new org.postgresql.Driver());
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		String url = "jdbc:postgresql://revature-db.cfdbjt00wi4b.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=entertainment720";
 		String user = "postgres";
 		String password = "Soccer123!";
