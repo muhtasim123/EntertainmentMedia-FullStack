@@ -1,3 +1,5 @@
+package com.revature.servlets;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -5,8 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.controllers.AuthController;
+
 public class FrontController extends HttpServlet {
 
+	private AuthController authController = new AuthController();
+	
     protected void directControl(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         //be our front controller
         String URI = req.getRequestURI().substring(req.getContextPath().length(), 
@@ -16,15 +22,43 @@ public class FrontController extends HttpServlet {
         	case "/login":
         		switch(req.getMethod()) {
         			case "GET":
+        				res.setStatus(400);
+        				res.getWriter().write("Method Not Supported");
         				break;
         			case "POST":
+        				authController.userLogin(req, res);
         				break;
         			case "PUT":
+        				res.setStatus(400);
+        				res.getWriter().write("Method Not Supported");
         				break;
         			case "DELETE":
+        				res.setStatus(400);
+        				res.getWriter().write("Method Not Supported");
         				break;
         			default:
         				break;
+        		}
+        		break;
+        	case "/users":
+        		switch(req.getMethod()) {
+	    			case "GET":
+	    				res.setStatus(400);
+	    				res.getWriter().write("Method Not Supported");
+	    				break;
+	    			case "POST":
+	    				authController.userLogin(req, res);
+	    				break;
+	    			case "PUT":
+	    				res.setStatus(400);
+	    				res.getWriter().write("Method Not Supported");
+	    				break;
+	    			case "DELETE":
+	    				res.setStatus(400);
+	    				res.getWriter().write("Method Not Supported");
+	    				break;
+	    			default:
+	    				break;
         		}
         		break;
         	default:
